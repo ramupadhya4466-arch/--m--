@@ -1,0 +1,1089 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Love Hub - For Komal �����</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+    
+    .dancing { font-family: 'Dancing Script', cursive; }
+    
+    /* Intro Animation */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    
+    @keyframes rotateIn {
+      from { transform: rotateY(90deg); opacity: 0; }
+      to { transform: rotateY(0); opacity: 1; }
+    }
+    
+    @keyframes bounceIn {
+      0% { transform: scale(0); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes slideInLeft {
+      from { transform: translateX(-100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+      from { transform: translateX(100px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.3); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.3); }
+      70% { transform: scale(1); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(5deg); }
+      75% { transform: translateY(10px) rotate(-5deg); }
+    }
+    
+    @keyframes rainbowGlow {
+      0% { filter: drop-shadow(0 0 20px #ff6b9d); }
+      33% { filter: drop-shadow(0 0 20px #ff9ecd); }
+      66% { filter: drop-shadow(0 0 20px #ffb6c1); }
+      100% { filter: drop-shadow(0 0 20px #ff6b9d); }
+    }
+    
+    .animate-fadeInUp { animation: fadeInUp 1s ease forwards; }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+    .animate-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+    .animate-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+    
+    /* Photo Grid Styles */
+    .photo-card {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    /* Image orientation fix */
+    img {
+      image-orientation: from-image;
+    }
+    
+    .photo-placeholder {
+      background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 50%, #f48fb1 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .photo-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%);
+      animation: shimmer 3s infinite;
+      background-size: 200% 100%;
+    }
+    
+    /* Flip Card Styles */
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    
+    .flip-card-inner {
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+    
+    /* Menu Button Styles */
+    .menu-btn {
+      background: linear-gradient(135deg, #ffffff 0%, #fce4ec 100%);
+      border: 3px solid #f48fb1;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .menu-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #f48fb1 0%, #ec407a 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    
+    .menu-btn:hover::before {
+      opacity: 1;
+    }
+    
+    .menu-btn:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(244, 143, 177, 0.4);
+    }
+    
+    .menu-btn:hover span {
+      color: white;
+    }
+    
+    .menu-btn span {
+      position: relative;
+      z-index: 1;
+      transition: color 0.4s;
+    }
+    
+    /* Scrapbook Canvas */
+    .scrapbook-canvas {
+      background: linear-gradient(135deg, #fff5f8 0%, #fce4ec 100%);
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(244, 143, 177, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(236, 64, 122, 0.1) 0%, transparent 50%);
+    }
+    
+    /* Tool Button */
+    .tool-btn {
+      transition: all 0.3s;
+    }
+    
+    .tool-btn:hover {
+      transform: scale(1.1);
+      background: #f48fb1;
+      color: white;
+    }
+    
+    .tool-btn.active {
+      background: #ec407a;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    /* Floating Hearts Background */
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.3;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #fce4ec;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #f48fb1, #ec407a);
+      border-radius: 4px;
+    }
+    
+    /* Music Player */
+    .music-visualizer {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 30px;
+    }
+    
+    .music-bar {
+      width: 4px;
+      background: linear-gradient(180deg, #ec407a, #f48fb1);
+      border-radius: 2px;
+      animation: musicPulse 0.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes musicPulse {
+      from { height: 10px; }
+      to { height: 30px; }
+    }
+    
+    .music-bar:nth-child(1) { animation-delay: 0s; }
+    .music-bar:nth-child(2) { animation-delay: 0.1s; }
+    .music-bar:nth-child(3) { animation-delay: 0.2s; }
+    .music-bar:nth-child(4) { animation-delay: 0.3s; }
+    .music-bar:nth-child(5) { animation-delay: 0.4s; }
+    
+    /* Navigation Dots */
+    .nav-dot {
+      transition: all 0.3s;
+    }
+    
+    .nav-dot.active {
+      background: #ec407a;
+      transform: scale(1.3);
+    }
+    
+    /* Anime Boy SVG */
+    .anime-boy {
+      animation: float 4s ease-in-out infinite, rainbowGlow 3s ease-in-out infinite;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto bg-gradient-to-br from-pink-50 via-white to-pink-100"><!-- Floating Hearts Background -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+   <div class="floating-heart absolute text-4xl" style="top: 10%; left: 5%; animation-delay: 0s;">
+    💕
+   </div>
+   <div class="floating-heart absolute text-3xl" style="top: 20%; right: 10%; animation-delay: 1s;">
+    💗
+   </div>
+   <div class="floating-heart absolute text-5xl" style="top: 60%; left: 8%; animation-delay: 2s;">
+    💖
+   </div>
+   <div class="floating-heart absolute text-3xl" style="top: 70%; right: 5%; animation-delay: 0.5s;">
+    💓
+   </div>
+   <div class="floating-heart absolute text-4xl" style="top: 40%; left: 90%; animation-delay: 1.5s;">
+    💝
+   </div>
+   <div class="floating-heart absolute text-3xl" style="bottom: 15%; left: 15%; animation-delay: 2.5s;">
+    💘
+   </div>
+   <div class="floating-heart absolute text-4xl" style="bottom: 25%; right: 15%; animation-delay: 3s;">
+    💕
+   </div>
+  </div><!-- Main Container -->
+  <div id="app" class="relative z-10 min-h-full"><!-- INTRO SCREEN -->
+   <div id="introScreen" class="min-h-full flex flex-col items-center justify-center p-8"><!-- Anime Boy SVG -->
+    <div class="anime-boy mb-8">
+     <svg width="200" height="200" viewbox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Hair --> <ellipse cx="100" cy="60" rx="55" ry="45" fill="#2d1b4e" /> <path d="M50 70 Q45 40 70 30 Q90 20 100 25 Q110 20 130 30 Q155 40 150 70" fill="#2d1b4e" /> <path d="M55 75 Q50 60 60 50" stroke="#3d2b5e" stroke-width="3" fill="none" /> <path d="M145 75 Q150 60 140 50" stroke="#3d2b5e" stroke-width="3" fill="none" /> <!-- Bangs --> <path d="M60 65 Q70 45 85 60 Q75 50 65 65" fill="#2d1b4e" /> <path d="M140 65 Q130 45 115 60 Q125 50 135 65" fill="#2d1b4e" /> <path d="M90 55 Q100 35 110 55 Q100 45 90 55" fill="#2d1b4e" /> <!-- Face --> <ellipse cx="100" cy="90" rx="42" ry="45" fill="#fce4ec" /> <!-- Eyes --> <ellipse cx="80" cy="85" rx="12" ry="14" fill="white" /> <ellipse cx="120" cy="85" rx="12" ry="14" fill="white" /> <ellipse cx="82" cy="87" rx="8" ry="9" fill="#4a1c6e" /> <ellipse cx="122" cy="87" rx="8" ry="9" fill="#4a1c6e" /> <ellipse cx="84" cy="84" rx="3" ry="3" fill="white" /> <ellipse cx="124" cy="84" rx="3" ry="3" fill="white" /> <!-- Eyebrows --> <path d="M68 70 Q80 65 92 70" stroke="#2d1b4e" stroke-width="2" fill="none" /> <path d="M108 70 Q120 65 132 70" stroke="#2d1b4e" stroke-width="2" fill="none" /> <!-- Blush --> <ellipse cx="65" cy="95" rx="8" ry="5" fill="#ffb6c1" opacity="0.6" /> <ellipse cx="135" cy="95" rx="8" ry="5" fill="#ffb6c1" opacity="0.6" /> <!-- Nose --> <path d="M100 95 L98 102 L102 102" stroke="#e8b4bc" stroke-width="1.5" fill="none" /> <!-- Mouth (smile) --> <path d="M90 110 Q100 120 110 110" stroke="#ec407a" stroke-width="2" fill="none" stroke-linecap="round" /> <!-- Neck --> <rect x="90" y="130" width="20" height="15" fill="#fce4ec" /> <!-- Shirt/Collar --> <path d="M70 145 L100 160 L130 145 L130 180 L70 180 Z" fill="#ec407a" /> <path d="M85 145 L100 160 L115 145" stroke="white" stroke-width="2" fill="none" /> <!-- Heart in hand --> <g transform="translate(140, 140)">
+       <path d="M15 8 C15 4 12 0 8 0 C4 0 0 4 0 8 C0 4 -4 0 -8 0 C-12 0 -15 4 -15 8 C-15 18 0 25 0 25 C0 25 15 18 15 8 Z" fill="#ff6b9d" class="animate-heartbeat" />
+      </g>
+     </svg>
+    </div><!-- Typing Text -->
+    <div class="text-center mb-8">
+     <h1 class="dancing text-5xl md:text-7xl text-pink-500 mb-4 animate-fadeInUp" style="animation-delay: 0.5s; opacity: 0;">Hey <span id="herNameDisplay">Komal</span>... 💕</h1>
+     <p class="text-xl md:text-2xl text-pink-400 animate-fadeInUp" style="animation-delay: 1s; opacity: 0;">I made something special just for you ✨</p>
+    </div><!-- Enter Button --> <button id="enterBtn" onclick="showHome()" class="mt-8 px-12 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white text-xl rounded-full shadow-2xl hover:shadow-pink-300/50 hover:scale-110 transition-all duration-300 animate-fadeInUp animate-pulse" style="animation-delay: 1.5s; opacity: 0;"> <span class="flex items-center gap-3"> Enter Our World 
+      <svg class="w-6 h-6" fill="currentColor" viewbox="0 0 20 20"><path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" />
+      </svg></span> </button> <!-- Sparkles -->
+    <div class="absolute top-20 left-20 text-3xl animate-pulse" style="animation-delay: 0.2s;">
+     ✨
+    </div>
+    <div class="absolute top-32 right-24 text-2xl animate-pulse" style="animation-delay: 0.5s;">
+     💫
+    </div>
+    <div class="absolute bottom-32 left-16 text-3xl animate-pulse" style="animation-delay: 0.8s;">
+     ⭐
+    </div>
+    <div class="absolute bottom-20 right-20 text-2xl animate-pulse" style="animation-delay: 1.1s;">
+     ✨
+    </div>
+   </div><!-- HOME SCREEN -->
+   <div id="homeScreen" class="hidden min-h-full flex flex-col items-center justify-center p-8"><!-- Big Romantic Title -->
+    <div class="text-center mb-8 animate-fadeInUp">
+     <h1 class="dancing text-6xl md:text-8xl bg-gradient-to-r from-pink-400 via-pink-500 to-rose-500 bg-clip-text text-transparent mb-4 animate-pulse leading-tight" style="text-shadow: 0 0 40px rgba(236, 64, 122, 0.4);">I Loveeeeeeee Uhhhhhhhhhhh<br>
+      Sooooo Muchhhhhhhhhhh 💕</h1>
+     <div class="flex items-center justify-center gap-3 text-4xl md:text-5xl mb-6 animate-heartbeat"><span>❤️</span> <span>✨</span> <span>💕</span> <span>���</span> <span>💝</span>
+     </div>
+    </div><!-- Header -->
+    <div class="text-center mb-12 animate-fadeInUp">
+     <h2 class="dancing text-4xl md:text-5xl text-pink-500 mb-4">Our Love Hub 💕</h2>
+     <p class="text-pink-400 text-lg">Choose where you want to go, <span id="herNameHome">Komal</span> ✨</p>
+    </div><!-- Menu Buttons -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl w-full"><!-- Photo Memory Wall --> <button onclick="showSection('photoWall')" class="menu-btn rounded-3xl p-8 flex flex-col items-center gap-4 group"> <span class="text-6xl group-hover:animate-heartbeat">📸</span> <span class="text-xl font-semibold text-pink-600">Photo Memory Wall</span> <span class="text-sm text-pink-400">24 Photos + 3 Videos</span> </button> <!-- Reasons I Love You --> <button onclick="showSection('reasons')" class="menu-btn rounded-3xl p-8 flex flex-col items-center gap-4 group"> <span class="text-6xl group-hover:animate-heartbeat">💝</span> <span class="text-xl font-semibold text-pink-600">Reasons I Love You</span> <span class="text-sm text-pink-400">8 Heartfelt Reasons</span> </button> <!-- Digital Scrapbook --> <button onclick="showSection('scrapbook')" class="menu-btn rounded-3xl p-8 flex flex-col items-center gap-4 group"> <span class="text-6xl group-hover:animate-heartbeat">📔</span> <span class="text-xl font-semibold text-pink-600">Memory Card Maker</span> <span class="text-sm text-pink-400">Create &amp; Download</span> </button>
+    </div><!-- Thank You Message Button --> <button onclick="showSection('thankYou')" class="mt-12 px-8 py-4 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-full shadow-xl hover:shadow-pink-300/50 hover:scale-105 transition-all duration-300 flex items-center gap-3"> <span class="text-2xl">💌</span> <span class="text-lg font-medium">Read My Thank You Message</span> </button>
+   </div><!-- PHOTO MEMORY WALL -->
+   <div id="photoWall" class="hidden min-h-full p-6 md:p-8"><!-- Back Button --> <button onclick="showHome()" class="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:bg-pink-50 transition-all flex items-center gap-2 text-pink-600">
+     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+     </svg> Back </button> <!-- Title -->
+    <div class="text-center mb-8 pt-12">
+     <h2 class="dancing text-4xl md:text-5xl text-pink-500 mb-2">Our Photo Memories 📸</h2>
+     <p class="text-pink-400">Click any photo to see it bigger 💕</p>
+    </div><!-- Special Featured Photo -->
+    <div class="max-w-4xl mx-auto mb-8 px-4">
+     <div class="relative rounded-3xl overflow-hidden shadow-2xl group cursor-pointer" onclick="openPhotoModal({ image: 'https://i.ibb.co/pvxsSnBv/Whats-App-Image-2026-01-11-at-14-47-54-c4c7f5a9.jpg', word: 'My Everything', caption: 'You mean the world to me 💖' })"><img src="https://i.ibb.co/pvxsSnBv/Whats-App-Image-2026-01-11-at-14-47-54-c4c7f5a9.jpg" alt="Special Memory" class="w-full h-64 md:h-96 object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="hidden w-full h-64 md:h-96 bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400 items-center justify-center"><span class="text-9xl">💕</span>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end justify-center pb-6">
+       <div class="text-center">
+        <p class="dancing text-3xl md:text-5xl text-white font-bold mb-2">My Everything 💕</p>
+        <p class="text-white/90 text-sm md:text-base">Our Most Special Memory ✨</p>
+       </div>
+      </div>
+     </div>
+    </div><!-- Photo Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-7xl mx-auto"><!-- Photos will be generated by JS -->
+    </div>
+    <div id="photoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80" onclick="closePhotoModal(event)">
+     <div class="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()"><button onclick="closePhotoModal()" class="absolute top-4 right-4 z-10 bg-white/90 rounded-full p-2 hover:bg-pink-100 transition-all">
+       <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+       </svg></button>
+      <div class="flex flex-col md:flex-row"><!-- Photo -->
+       <div id="modalPhoto" class="w-full md:w-2/3 h-64 md:h-96 bg-black flex items-center justify-center overflow-hidden"><span class="text-6xl">📷</span>
+       </div><!-- Photo Info -->
+       <div class="w-full md:w-1/3 p-6 bg-gradient-to-br from-pink-50 to-white flex flex-col justify-center items-center">
+        <div class="text-6xl mb-4">
+         💕
+        </div>
+        <p class="text-pink-600 font-semibold text-center mb-2 text-xl" id="songTitle">Beautiful</p>
+        <p class="text-pink-400 text-sm text-center mb-4" id="songArtist">Caption</p>
+        <p class="text-pink-300 text-xs text-center italic" id="photoCaption">✨ Beautiful Memory ✨</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- REASONS I LOVE YOU -->
+   <div id="reasons" class="hidden min-h-full p-6 md:p-8"><!-- Back Button --> <button onclick="showHome()" class="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:bg-pink-50 transition-all flex items-center gap-2 text-pink-600">
+     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+     </svg> Back </button> <!-- Title -->
+    <div class="text-center mb-8 pt-12">
+     <h2 class="dancing text-4xl md:text-5xl text-pink-500 mb-2">8 Reasons I Love You 💝</h2>
+     <p class="text-pink-400">Click each card to reveal my heart ✨</p>
+    </div><!-- Flip Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto" id="reasonsGrid"><!-- Cards will be generated by JS -->
+    </div>
+   </div><!-- DIGITAL SCRAPBOOK -->
+   <div id="scrapbook" class="hidden min-h-full flex flex-col"><!-- Back Button --> <button onclick="showHome()" class="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:bg-pink-50 transition-all flex items-center gap-2 text-pink-600">
+     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+     </svg> Back </button> <!-- Toolbar -->
+    <div class="bg-white/90 backdrop-blur-sm shadow-lg p-3 pt-16">
+     <div class="max-w-md mx-auto">
+      <p class="text-pink-600 font-semibold text-center mb-3 text-sm">💕 Create Your Memory Card</p>
+      <div class="grid grid-cols-2 gap-2 mb-3"><button onclick="showPhotoSelector()" class="tool-btn px-3 py-2 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center gap-2 text-sm"> <span>🖼️</span> Select Photo </button> <button onclick="addPassage()" class="tool-btn px-3 py-2 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center gap-2 text-sm"> <span>📝</span> Add Passage </button>
+      </div>
+      <div class="grid grid-cols-2 gap-2"><button onclick="generateCard()" class="px-3 py-2 rounded-xl bg-gradient-to-r from-pink-400 to-pink-500 text-white flex items-center justify-center gap-2 hover:shadow-lg transition-all text-sm"> <span>✨</span> Create Card </button> <button onclick="downloadCard()" class="px-3 py-2 rounded-xl bg-gradient-to-r from-purple-400 to-pink-400 text-white flex items-center justify-center gap-2 hover:shadow-lg transition-all text-sm"> <span>💾</span> Download </button>
+      </div>
+     </div>
+    </div><!-- Preview Area -->
+    <div class="flex-1 scrapbook-canvas overflow-auto p-4" id="previewContainer">
+     <div class="max-w-md mx-auto">
+      <div class="text-center mb-4">
+       <h3 class="dancing text-2xl text-pink-500 mb-2">Create Your Memory Card 💕</h3>
+       <p class="text-pink-400 text-xs">Select a photo and add a passage</p>
+      </div><!-- Card Preview -->
+      <div id="cardPreview" class="hidden bg-white rounded-2xl shadow-2xl overflow-hidden">
+       <div class="relative"><img id="selectedImage" class="w-full h-64 object-cover" src="" alt="Selected">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+       </div>
+       <div class="p-4">
+        <div id="passageContent" class="text-pink-700 leading-relaxed mb-4 text-sm"></div>
+        <div class="text-right">
+         <p class="text-pink-400 text-xs italic">Made with love 💕</p>
+         <p class="text-pink-300 text-xs mt-1">- Krish</p>
+        </div>
+       </div>
+      </div><!-- Empty State -->
+      <div id="emptyState" class="text-center py-12">
+       <div class="text-6xl mb-4">
+        ��
+       </div>
+       <p class="text-pink-400 text-sm px-4">Start by selecting a photo and adding your passage</p>
+      </div>
+     </div>
+    </div><!-- Photo Selector Modal -->
+    <div id="photoSelectorModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90">
+     <div class="bg-white rounded-3xl w-full max-w-md max-h-[90%] overflow-hidden flex flex-col">
+      <div class="p-4 border-b border-pink-100 flex items-center justify-between">
+       <h3 class="dancing text-2xl text-pink-500">Select Your Photo 💕</h3><button onclick="closePhotoSelector()" class="text-pink-400 hover:text-pink-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg></button>
+      </div>
+      <div class="flex-1 overflow-auto p-4">
+       <div class="grid grid-cols-3 gap-2" id="photoSelectorGrid"><!-- Photos will be generated here -->
+       </div>
+      </div>
+     </div>
+    </div><!-- Passage Selector Modal -->
+    <div id="passageSelectorModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90">
+     <div class="bg-white rounded-3xl w-full max-w-md max-h-[90%] overflow-hidden flex flex-col">
+      <div class="p-4 border-b border-pink-100 flex items-center justify-between">
+       <h3 class="dancing text-2xl text-pink-500">Select Your Passage 💕</h3><button onclick="closePassageSelector()" class="text-pink-400 hover:text-pink-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg></button>
+      </div>
+      <div class="flex-1 overflow-auto p-4">
+       <div class="grid grid-cols-1 gap-3" id="passageSelectorGrid"><!-- Passages will be generated here -->
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- THANK YOU MESSAGE -->
+   <div id="thankYou" class="hidden min-h-full flex flex-col items-center justify-center p-8"><!-- Back Button --> <button onclick="showHome()" class="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg hover:bg-pink-50 transition-all flex items-center gap-2 text-pink-600">
+     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+     </svg> Back </button> <!-- Animated Heart -->
+    <div class="text-8xl animate-heartbeat mb-8">
+     💕
+    </div><!-- Message Card -->
+    <div class="max-w-2xl bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 text-center relative">
+     <h2 class="dancing text-4xl md:text-5xl text-pink-500 mb-6">Thank You, <span id="herNameThank">Komal</span> 💕</h2>
+     <div class="space-y-5 text-pink-700 text-base md:text-lg leading-relaxed text-left">
+      <p>Thank you for being the most incredible person in my life. Every single moment I spend with you feels like a beautiful dream that I never want to wake up from. You've brought colors into my life that I didn't even know existed.</p>
+      <p>Before you came into my life, I thought I understood what happiness meant. But you've shown me a whole new world - a world where every day is brighter, every challenge is easier, and every moment is filled with pure joy. Your presence has transformed my ordinary days into extraordinary memories.</p>
+      <p>You've taught me what true love really means. It's in your radiant smile that has the power to light up even my darkest days. It's in your gentle voice that calms my anxious heart and makes everything feel right. It's in your caring touch that reminds me I'm not alone. It's in your beautiful eyes that I see my future, my happiness, and my home.</p>
+      <p>The way you understand me without words, the way you support my dreams, the way you believe in me even when I doubt myself - these things mean more to me than you'll ever know. You've become my safe space, my comfort zone, my favorite place in the entire world.</p>
+      <p>I promise to cherish every moment we share, to protect your heart with all that I am, to support your dreams just as you support mine, and to love you more deeply with each passing day. You're not just my love - you're my best friend, my confidant, my inspiration, my soulmate, and my forever.</p>
+      <p>Thank you for choosing me, for trusting me with your heart, for making me feel special every single day. Thank you for your patience, your kindness, your beautiful soul. You make me want to be a better person, and I'm so incredibly grateful for you.</p>
+      <p class="font-semibold text-pink-600 pt-4 text-center text-lg">Forever Yours, With All My Heart 💝<br>
+       Always and Forever 💕</p>
+     </div><!-- Floating hearts around card -->
+     <div class="absolute -top-4 -left-4 text-3xl animate-float">
+      💗
+     </div>
+     <div class="absolute -top-4 -right-4 text-3xl animate-float" style="animation-delay: 0.5s;">
+      💖
+     </div>
+     <div class="absolute -bottom-4 -left-4 text-3xl animate-float" style="animation-delay: 1s;">
+      💕
+     </div>
+     <div class="absolute -bottom-4 -right-4 text-3xl animate-float" style="animation-delay: 1.5s;">
+      💝
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Config
+    const defaultConfig = {
+      her_name: 'Komal',
+      background_color: '#fff5f8',
+      primary_color: '#ec407a',
+      secondary_color: '#f48fb1',
+      text_color: '#880e4f',
+      accent_color: '#ffffff'
+    };
+    
+    let config = { ...defaultConfig };
+    
+    // Photo data with beautiful words - PHOTOS FIRST, VIDEOS LAST
+    const photoData = [
+      { id: 1, image: 'https://i.ibb.co/G3rmysqq/IMG-20260101-WA0007.jpg', word: 'Beautiful', caption: 'Every moment with you is beautiful 💕' },
+      { id: 2, image: 'https://i.ibb.co/HDdtwGYQ/IMG-20260101-WA0008.jpg', word: 'Gorgeous', caption: 'Your smile lights up my world 💗' },
+      { id: 3, image: 'https://i.ibb.co/KpWb5PWZ/IMG-20260101-WA0009.jpg', word: 'Stunning', caption: 'Absolutely stunning in every way ✨' },
+      { id: 4, image: 'https://i.ibb.co/1tDjPcgC/IMG-20260101-WA0010.jpg', word: 'Precious', caption: 'You are so precious to me 💖' },
+      { id: 5, image: 'https://i.ibb.co/5gCCK8n7/IMG-20260101-WA0011.jpg', word: 'Radiant', caption: 'Your radiance brightens everything 🌹' },
+      { id: 6, image: 'https://i.ibb.co/DPrPR7ZM/IMG-20260101-WA0013.jpg', word: 'Enchanting', caption: 'Completely enchanted by you 💝' },
+      { id: 7, image: 'https://i.ibb.co/kVk4Y2Ch/IMG-20260101-WA0015.jpg', word: 'Angelic', caption: 'Like an angel in my life 🌸' },
+      { id: 8, image: 'https://i.ibb.co/gbBXn7yc/IMG-20260101-WA0016.jpg', word: 'Mesmerizing', caption: 'Your presence is mesmerizing 💍' },
+      { id: 9, image: 'https://i.ibb.co/Ndxrky46/IMG-20260101-WA0017.jpg', word: 'Breathtaking', caption: 'Every moment takes my breath away 🌙' },
+      { id: 10, image: 'https://i.ibb.co/V04SbVmk/IMG-20260111-WA0004.jpg', word: 'Perfect', caption: 'Absolutely perfect in every way 💓' },
+      { id: 11, image: 'https://i.ibb.co/hxmbgYRw/IMG-20260111-WA0005.jpg', word: 'Lovely', caption: 'Everything about you is lovely 🎀' },
+      { id: 12, image: 'https://i.ibb.co/BKZyCNXD/IMG-20260111-WA0006.jpg', word: 'Charming', caption: 'Your charm captivates me completely 👰' },
+      { id: 13, image: 'https://i.ibb.co/nqBWQVfC/IMG-20260111-WA0007.jpg', word: 'Adorable', caption: 'You are beyond adorable 😍' },
+      { id: 14, image: 'https://i.ibb.co/XksJM0Vh/IMG-20260111-WA0008.jpg', word: 'Graceful', caption: 'Your grace is unmatched 🌺' },
+      { id: 15, image: 'https://i.ibb.co/HJDHRzS/IMG-20260111-WA0009.jpg', word: 'Elegant', caption: 'Elegance defines you perfectly 🎵' },
+      { id: 16, image: 'https://i.ibb.co/b5cpbnkY/IMG-20260111-WA0010.jpg', word: 'Divine', caption: 'You are simply divine 💗' },
+      { id: 17, image: 'https://i.ibb.co/hFps5n85/IMG-20260111-WA0011.jpg', word: 'Magnificent', caption: 'Magnificently beautiful always 🎵' },
+      { id: 18, image: 'https://i.ibb.co/8hx48XK/IMG-20260111-WA0012.jpg', word: 'Dazzling', caption: 'Your presence dazzles me 🌷' },
+      { id: 19, image: 'https://i.ibb.co/7cKKv4h/IMG-20260111-WA0013.jpg', word: 'Wonderful', caption: 'Wonderfully made for me 😊' },
+      { id: 20, image: 'https://i.ibb.co/TDKWHYWz/IMG-20260111-WA0014.jpg', word: 'Amazing', caption: 'You are truly amazing 💕' },
+      { id: 21, image: 'https://i.ibb.co/KzpLfj3p/IMG-20260111-WA0015.jpg', word: 'Delightful', caption: 'Every moment is delightful 🌺' },
+      { id: 22, image: 'https://i.ibb.co/LXBt7F1F/IMG-20260111-WA0016.jpg', word: 'Captivating', caption: 'You captivate my heart ����' },
+      { id: 23, image: 'https://i.ibb.co/tPzFVP8L/IMG-20260111-WA0017.jpg', word: 'Exquisite', caption: 'Exquisitely beautiful always 🌟' },
+      { id: 24, image: 'https://i.ibb.co/TBJbX3s0/IMG-20260111-WA0018.jpg', word: 'Heavenly', caption: 'Like heaven on earth 💝' },
+      { id: 'v1', video: 'https://raw.githubusercontent.com/ramupadhyay7788-arch/--v1-/main/index.mp4', word: 'Magical', caption: 'Our magical moments together 🎬' },
+      { id: 'v2', video: 'https://raw.githubusercontent.com/ramupadhyay7788-arch/-v2--/main/index.mp4', word: 'Unforgettable', caption: 'Memories that last forever 🎥' },
+      { id: 'v3', video: 'https://raw.githubusercontent.com/ramupadhyay7788-arch/-v3-/main/index.mp4', word: 'Timeless', caption: 'Timeless love story 💫' }
+    ];
+    
+    // 8 Reasons I Love You
+    const reasons = [
+      {
+        title: 'Your Presence in My Life',
+        icon: '🌟',
+        text: 'My life is infinitely better because of you. Before you, I didn\'t know what true happiness felt like. You\'ve filled my days with meaning, joy, and purpose. Every morning I wake up grateful that you exist.'
+      },
+      {
+        title: 'How Important You Are',
+        icon: '👑',
+        text: 'You\'re not just important to me - you\'re my priority. In a world full of chaos, you\'re my constant. I would move mountains, cross oceans, and give everything just to see you smile.'
+      },
+      {
+        title: 'Your Beautiful Smile',
+        icon: '😊',
+        text: 'Your smile is my strength. When the world feels heavy and everything seems impossible, one look at your smile makes everything okay. It\'s like sunshine breaking through the clouds. Seeing you happy fills my heart with pure joy - your happiness is my happiness. I find myself happy just by seeing you smile and laugh. Your joy is contagious, and it lights up my entire world.'
+      },
+      {
+        title: 'How You Changed Me',
+        icon: '💎',
+        text: 'You\'ve made me a better person. Your love has taught me patience, kindness, and what it means to truly care for someone. I\'m the best version of myself because of you.'
+      },
+      {
+        title: 'Talking to You',
+        icon: '💬',
+        text: 'Every conversation with you brings me peace. Whether we\'re laughing about something silly or having deep talks at midnight, I feel completely at ease. You understand me like no one else.'
+      },
+      {
+        title: 'Feeling Safe With You',
+        icon: '🏠',
+        text: 'With you, I\'ve found my safe haven. I can be completely myself - vulnerable, imperfect, and real. You\'ve never judged me, only loved me more. That trust is priceless.'
+      },
+      {
+        title: 'Little Things You Do',
+        icon: '🎀',
+        text: 'It\'s the small things that make me fall for you every day - the way you care, your little habits, how you remember tiny details about me. These moments mean more than grand gestures ever could.'
+      },
+      {
+        title: 'Our Future Together',
+        icon: '🌙',
+        text: 'I dream of forever with you. Every plan I make, every goal I set - you\'re part of it. I see us building a beautiful life together, growing old hand in hand, creating endless memories.'
+      }
+    ];
+    
+    // Long beautiful passages for cards
+    const passages = [
+      {
+        title: 'My Eternal Love',
+        text: 'From the moment I first saw you, my world changed forever. You are the light that guides me through the darkest nights, the warmth that comforts me in the coldest times, and the joy that fills my heart every single day. Your presence in my life is a blessing I could never have imagined. Every laugh we share, every moment we spend together, every memory we create - they all add up to a beautiful love story that I want to keep writing with you for the rest of my life. You make me believe in magic, in destiny, and in the power of true love. With you, I have found my home, my peace, and my forever. The way you understand me without words, the way you make me feel safe and loved, the way you bring out the best in me - these are the things that make every single day with you feel like a dream come true. I never knew love could be this beautiful, this pure, this overwhelming until you walked into my life. You are my greatest blessing, my answered prayer, my forever love.'
+      },
+      {
+        title: 'You Complete Me',
+        text: 'Before you came into my life, I was just going through the motions, never really understanding what it meant to be truly happy. But then you appeared, like an answer to a prayer I didn\'t even know I was making. You\'ve shown me what it means to be loved unconditionally, to be accepted for who I am, flaws and all. Your love has transformed me in ways I never thought possible. You\'ve made me kinder, more patient, more understanding. You\'ve taught me that love isn\'t just a feeling - it\'s a choice we make every day. And I choose you, today, tomorrow, and every day after that. The depth of my feelings for you grows stronger with each passing moment. You inspire me to be better, to dream bigger, to love harder. With you by my side, I feel invincible, like there\'s nothing in this world we can\'t overcome together. You are my strength when I feel weak, my hope when I feel lost, my light when everything seems dark. Thank you for being my everything.'
+      },
+      {
+        title: 'Forever Grateful',
+        text: 'I want to thank you for being exactly who you are. Thank you for your patience when I\'m difficult, your understanding when I\'m confused, your support when I\'m struggling, and your love when I need it most. Thank you for the way you look at me, like I\'m the only person in the world that matters. Thank you for your smile that brightens my darkest days, your laughter that brings music to my life, and your presence that makes everything better. Thank you for choosing me, for loving me, for being my partner in this beautiful journey called life. I am forever grateful for you. Every moment spent with you is a treasure I hold close to my heart. You\'ve taught me what it means to be truly happy, to feel complete, to know that I am exactly where I belong. Your love has given me purpose, direction, and meaning. I never want to imagine a life without you because you\'ve become such an essential part of who I am. Thank you for being my home, my safe haven, my forever person.'
+      },
+      {
+        title: 'My Perfect Match',
+        text: 'People say that finding your soulmate is rare, but I know I\'ve found mine in you. You understand me in ways that no one else ever has. You know what I\'m thinking before I say it, what I need before I ask for it. We fit together perfectly, like two puzzle pieces that were always meant to be joined. With you, I can be silly and serious, strong and vulnerable, happy and sad - and you accept all of it. You\'ve shown me that true love isn\'t about finding someone perfect, it\'s about finding someone perfect for you. And you are absolutely perfect for me in every single way. The connection we share is something rare and precious, something I will treasure for the rest of my life. You make me laugh when I want to cry, you give me strength when I feel weak, you make me feel loved when I doubt myself. Being with you feels like coming home after a long journey. You are my comfort, my joy, my everything. I thank the universe every day for bringing us together.'
+      },
+      {
+        title: 'Building Our Future',
+        text: 'When I think about the future, I see you by my side through it all. I see us building a beautiful life together, filled with love, laughter, and countless precious moments. I see us growing old together, holding hands through all of life\'s ups and downs. I see us creating a home filled with warmth and happiness, a place where love lives in every corner. I see us supporting each other\'s dreams, celebrating each other\'s successes, and comforting each other through challenges. Every dream I have includes you, because you are my dream come true. I envision lazy Sunday mornings together, adventures to new places, quiet evenings just being in each other\'s presence. I see us creating traditions, making memories, building something beautiful and lasting. I see us facing whatever life throws at us hand in hand, knowing that together we can overcome anything. Our future is bright because we\'re in it together, and I cannot wait to spend every moment of it loving you more and more each day.'
+      },
+      {
+        title: 'The Way You Love',
+        text: 'The way you love me takes my breath away. It\'s in the little things - the way you hold my hand, the way you kiss my forehead, the way you pull me close when I\'m feeling down. It\'s in the big things too - the way you stand by me no matter what, the way you believe in me when I doubt myself, the way you fight for us when things get tough. Your love is patient and kind, strong and gentle, passionate and tender. It\'s everything I\'ve ever wanted and so much more than I ever dreamed possible. Your love has changed my life, and I promise to spend the rest of my days showing you just how much you mean to me. You make me feel cherished, valued, and deeply loved in ways I never thought possible. Every gesture, every word, every look reminds me how lucky I am to have you. You\'ve shown me what it means to be truly loved, and I promise to love you back with the same intensity, the same devotion, the same pure and honest emotion for as long as I live.'
+      },
+      {
+        title: 'My Beautiful Journey',
+        text: 'Life before you was just a series of days passing by. But life with you is an adventure, a beautiful journey that gets better with every step we take together. You\'ve opened my eyes to so much beauty in the world that I never noticed before. You\'ve shown me that love can be both exciting and comfortable, passionate and peaceful. Every day with you brings new reasons to smile, new memories to treasure, new moments to cherish. I love how we can laugh together until our stomachs hurt, talk for hours about everything and nothing, and sit in comfortable silence just enjoying each other\'s presence. This journey with you is the greatest gift of my life. You make ordinary moments feel extraordinary, simple days feel special, and every experience more meaningful. With you, life isn\'t just about existing - it\'s about truly living, feeling, experiencing everything to the fullest. You are my adventure, my home, my everything. I look forward to every chapter of this beautiful story we\'re writing together.'
+      },
+      {
+        title: 'My Heart Is Yours',
+        text: 'My heart belongs to you completely and eternally. You have filled it with so much love that sometimes I feel like it might burst with joy. Every beat of my heart whispers your name, every thought in my mind revolves around you, every dream I have features you. You are my first thought in the morning and my last thought at night. You are the reason I smile without reason, laugh without cause, and feel grateful for every single day. I promise to love you with all that I am, to cherish you with every breath, to support you through every challenge, and to stand by your side through every moment of our lives. You are my everything, my always, my forever. There are no words in any language that can fully express how deeply I love you, how much you mean to me, how essential you are to my very existence. You are the answer to every question, the solution to every problem, the light in every darkness. My love for you is infinite, unconditional, and eternal. Today, tomorrow, and for all the days of my life, you will always be the one my heart beats for.'
+      }
+    ];
+    
+    // Scrapbook Variables
+    let selectedImageSrc = null;
+    let savedPassage = '';
+    
+    // Show Photo Selector
+    function showPhotoSelector() {
+      const grid = document.getElementById('photoSelectorGrid');
+      grid.innerHTML = '';
+      
+      photoData.forEach(photo => {
+        if (photo.image) { // Only show images, not videos
+          const div = document.createElement('div');
+          div.className = 'aspect-square rounded-lg overflow-hidden cursor-pointer hover:ring-4 ring-pink-400 transition-all';
+          div.innerHTML = `
+            <img src="${photo.image}" alt="${photo.word}" class="w-full h-full object-cover" onerror="this.parentElement.style.display='none';">
+          `;
+          div.onclick = () => {
+            selectedImageSrc = photo.image;
+            closePhotoSelector();
+            updateCardPreview();
+            showInlineMessage('Photo selected! 💕');
+          };
+          grid.appendChild(div);
+        }
+      });
+      
+      document.getElementById('photoSelectorModal').classList.remove('hidden');
+    }
+    
+    function closePhotoSelector() {
+      document.getElementById('photoSelectorModal').classList.add('hidden');
+    }
+    
+    function addPassage() {
+      // Show passage selector modal instead
+      const grid = document.getElementById('passageSelectorGrid');
+      grid.innerHTML = '';
+      
+      passages.forEach((passage, index) => {
+        const div = document.createElement('div');
+        div.className = 'bg-gradient-to-br from-pink-50 to-white p-4 rounded-xl border-2 border-pink-200 cursor-pointer hover:border-pink-400 hover:shadow-lg transition-all';
+        div.innerHTML = `
+          <h4 class="font-semibold text-pink-600 mb-2 text-sm">${passage.title}</h4>
+          <p class="text-pink-400 text-xs line-clamp-3">${passage.text}</p>
+        `;
+        div.onclick = () => {
+          savedPassage = passage.text;
+          closePassageSelector();
+          updateCardPreview();
+          showInlineMessage('Passage selected! 💕');
+        };
+        grid.appendChild(div);
+      });
+      
+      document.getElementById('passageSelectorModal').classList.remove('hidden');
+    }
+    
+    function closePassageSelector() {
+      document.getElementById('passageSelectorModal').classList.add('hidden');
+    }
+    
+    function updateCardPreview() {
+      if (selectedImageSrc || savedPassage) {
+        document.getElementById('emptyState').classList.add('hidden');
+        document.getElementById('cardPreview').classList.remove('hidden');
+        
+        if (selectedImageSrc) {
+          document.getElementById('selectedImage').src = selectedImageSrc;
+        }
+        
+        if (savedPassage) {
+          document.getElementById('passageContent').innerHTML = savedPassage.replace(/\n/g, '<br>');
+        }
+      }
+    }
+    
+    function generateCard() {
+      if (!selectedImageSrc && !savedPassage) {
+        showInlineMessage('Please select a photo or add a passage first! 💕');
+        return;
+      }
+      updateCardPreview();
+      showInlineMessage('Card created successfully! Now you can download it 💖');
+    }
+    
+    function downloadCard() {
+      const card = document.getElementById('cardPreview');
+      if (card.classList.contains('hidden')) {
+        showInlineMessage('Please create a card first! 💕');
+        return;
+      }
+      
+      showInlineMessage('Creating your card... Please wait 💕');
+      
+      // SUPER TALL CANVAS for full photo!
+      const canvas = document.createElement('canvas');
+      canvas.width = 1080;
+      canvas.height = 4000; // EVEN MORE TALL NOW!
+      const ctx = canvas.getContext('2d');
+      
+      // Background gradient
+      const bgGradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      bgGradient.addColorStop(0, '#fff5f8');
+      bgGradient.addColorStop(1, '#fce4ec');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Border decoration
+      ctx.strokeStyle = '#f48fb1';
+      ctx.lineWidth = 20;
+      ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+      
+      // If there's an image, draw it
+      if (selectedImageSrc) {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+          // MASSIVE FRAME FOR PHOTO - NO CUTTING!
+          ctx.save();
+          const imgX = 80;
+          const imgY = 80;
+          const imgW = canvas.width - 160;
+          const imgH = 3000; // SUPER MASSIVE HEIGHT - FULL PHOTO!
+          const radius = 30;
+          
+          // Calculate scaling to cover the area
+          const scale = Math.max(imgW / img.width, imgH / img.height);
+          const scaledW = img.width * scale;
+          const scaledH = img.height * scale;
+          const offsetX = imgX + (imgW - scaledW) / 2;
+          const offsetY = imgY + (imgH - scaledH) / 2;
+          
+          ctx.beginPath();
+          ctx.moveTo(imgX + radius, imgY);
+          ctx.lineTo(imgX + imgW - radius, imgY);
+          ctx.quadraticCurveTo(imgX + imgW, imgY, imgX + imgW, imgY + radius);
+          ctx.lineTo(imgX + imgW, imgY + imgH - radius);
+          ctx.quadraticCurveTo(imgX + imgW, imgY + imgH, imgX + imgW - radius, imgY + imgH);
+          ctx.lineTo(imgX + radius, imgY + imgH);
+          ctx.quadraticCurveTo(imgX, imgY + imgH, imgX, imgY + imgH - radius);
+          ctx.lineTo(imgX, imgY + radius);
+          ctx.quadraticCurveTo(imgX, imgY, imgX + radius, imgY);
+          ctx.closePath();
+          ctx.clip();
+          
+          ctx.drawImage(img, offsetX, offsetY, scaledW, scaledH);
+          ctx.restore();
+          
+          // Shadow for image
+          ctx.shadowColor = 'rgba(236, 64, 122, 0.3)';
+          ctx.shadowBlur = 20;
+          ctx.shadowOffsetY = 10;
+          ctx.strokeStyle = '#f48fb1';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+          
+          // Text section - NOW LOWER
+          if (savedPassage) {
+            ctx.fillStyle = '#880e4f';
+            ctx.font = 'bold 26px Arial, sans-serif';
+            const maxWidth = canvas.width - 160;
+            const lineHeight = 38;
+            let y = imgY + imgH + 80;
+            const words = savedPassage.split(' ');
+            let line = '';
+            
+            words.forEach(word => {
+              const testLine = line + word + ' ';
+              const metrics = ctx.measureText(testLine);
+              if (metrics.width > maxWidth && line !== '') {
+                ctx.fillText(line, 80, y);
+                line = word + ' ';
+                y += lineHeight;
+                if (y > canvas.height - 200) return;
+              } else {
+                line = testLine;
+              }
+            });
+            if (y < canvas.height - 200) {
+              ctx.fillText(line, 80, y);
+            }
+          }
+          
+          // Decorative hearts
+          ctx.font = '40px Arial';
+          ctx.fillText('💕', 80, canvas.height - 120);
+          ctx.fillText('💖', canvas.width - 130, canvas.height - 120);
+          
+          // Signature
+          ctx.fillStyle = '#ec407a';
+          ctx.font = 'italic 24px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('Made with love 💕', canvas.width / 2, canvas.height - 80);
+          ctx.fillStyle = '#f48fb1';
+          ctx.font = '20px Arial';
+          ctx.fillText('- Krish', canvas.width / 2, canvas.height - 45);
+          
+          // Download
+          canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = `memory-card-${Date.now()}.png`;
+            link.href = url;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            showInlineMessage('Card downloaded! Check your downloads 💖');
+          }, 'image/png', 1.0);
+        };
+        img.onerror = () => {
+          showInlineMessage('Could not load image. Please try another photo! 💕');
+        };
+        img.src = selectedImageSrc;
+      } else {
+        // Just text card
+        ctx.fillStyle = '#880e4f';
+        ctx.font = 'bold 28px Arial, sans-serif';
+        const maxWidth = canvas.width - 160;
+        const lineHeight = 40;
+        let y = 200;
+        const words = savedPassage.split(' ');
+        let line = '';
+        
+        words.forEach(word => {
+          const testLine = line + word + ' ';
+          const metrics = ctx.measureText(testLine);
+          if (metrics.width > maxWidth && line !== '') {
+            ctx.fillText(line, 80, y);
+            line = word + ' ';
+            y += lineHeight;
+            if (y > canvas.height - 250) return;
+          } else {
+            line = testLine;
+          }
+        });
+        if (y < canvas.height - 250) {
+          ctx.fillText(line, 80, y);
+        }
+        
+        // Decorative hearts
+        ctx.font = '40px Arial';
+        ctx.fillText('💕', 80, canvas.height - 120);
+        ctx.fillText('💖', canvas.width - 130, canvas.height - 120);
+        
+        ctx.fillStyle = '#ec407a';
+        ctx.font = 'italic 24px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText('Made with love 💕', canvas.width / 2, canvas.height - 80);
+        ctx.fillStyle = '#f48fb1';
+        ctx.font = '20px Arial';
+        ctx.fillText('- Krish', canvas.width / 2, canvas.height - 45);
+        
+        canvas.toBlob((blob) => {
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.download = `memory-card-${Date.now()}.png`;
+          link.href = url;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+          showInlineMessage('Card downloaded! Check your downloads 💖');
+        }, 'image/png', 1.0);
+      }
+    }
+    
+    function showInlineMessage(message) {
+      const existing = document.getElementById('inlineMessage');
+      if (existing) existing.remove();
+      
+      const msg = document.createElement('div');
+      msg.id = 'inlineMessage';
+      msg.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-pink-500 text-white px-6 py-3 rounded-full shadow-xl z-50 animate-fadeInUp';
+      msg.textContent = message;
+      document.body.appendChild(msg);
+      
+      setTimeout(() => msg.remove(), 3000);
+    }
+    
+    // Initialize
+    function init() {
+      generatePhotoGrid();
+      generateReasonCards();
+      updateNames();
+    }
+    
+    // Update all name displays
+    function updateNames() {
+      const name = config.her_name || defaultConfig.her_name;
+      document.getElementById('herNameDisplay').textContent = name;
+      document.getElementById('herNameHome').textContent = name;
+      document.getElementById('herNameThank').textContent = name;
+    }
+    
+    // Navigation functions
+    function showHome() {
+      hideAllSections();
+      document.getElementById('homeScreen').classList.remove('hidden');
+    }
+    
+    function showSection(sectionId) {
+      hideAllSections();
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+    
+    function hideAllSections() {
+      document.getElementById('introScreen').classList.add('hidden');
+      document.getElementById('homeScreen').classList.add('hidden');
+      document.getElementById('photoWall').classList.add('hidden');
+      document.getElementById('reasons').classList.add('hidden');
+      document.getElementById('scrapbook').classList.add('hidden');
+      document.getElementById('thankYou').classList.add('hidden');
+    }
+    
+    // Generate Photo Grid
+    function generatePhotoGrid() {
+      const container = document.querySelector('#photoWall .grid');
+      container.innerHTML = '';
+      
+      photoData.forEach((photo, index) => {
+        const card = document.createElement('div');
+        card.className = 'photo-card rounded-2xl overflow-hidden shadow-lg cursor-pointer';
+        card.style.animationDelay = `${index * 0.1}s`;
+        
+        // Check if it's a video or image
+        if (photo.video) {
+          card.innerHTML = `
+            <div class="relative group overflow-hidden bg-gray-900" style="width: 100%; padding-bottom: 100%; position: relative;">
+              <video src="${photo.video}" class="absolute inset-0 w-full h-full object-cover" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>
+              <div class="hidden absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 items-center justify-center">
+                <span class="text-5xl">🎬</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-pink-500/90 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-white shadow-lg flex items-center gap-1">
+                <span>▶️</span> Video
+              </div>
+              <div class="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-pink-600 shadow-lg">
+                ${photo.word} ✨
+              </div>
+            </div>
+          `;
+        } else {
+          card.innerHTML = `
+            <div class="relative group overflow-hidden" style="width: 100%; padding-bottom: 100%; position: relative;">
+              <img src="${photo.image}" alt="${photo.word}" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="hidden absolute inset-0 bg-gradient-to-br from-pink-200 to-pink-300 items-center justify-center">
+                <span class="text-5xl">📷</span>
+              </div>
+              <div class="absolute bottom-2 right-2 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-pink-600 shadow-lg">
+                ${photo.word} ✨
+              </div>
+            </div>
+          `;
+        }
+        
+        card.onclick = () => openPhotoModal(photo);
+        container.appendChild(card);
+      });
+    }
+    
+    // Photo Modal
+    function openPhotoModal(photo) {
+      const modalPhoto = document.getElementById('modalPhoto');
+      
+      // Check if it's a video or image
+      if (photo.video) {
+        modalPhoto.innerHTML = `
+          <video src="${photo.video}" controls autoplay loop muted playsinline class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            Your browser does not support videos.
+          </video>
+          <div class="hidden w-full h-full bg-gradient-to-br from-pink-200 to-pink-300 items-center justify-center">
+            <span class="text-8xl">🎬</span>
+          </div>
+        `;
+      } else {
+        modalPhoto.innerHTML = `
+          <img src="${photo.image}" alt="${photo.word}" class="w-full h-full object-contain" style="image-orientation: from-image;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="hidden w-full h-full bg-gradient-to-br from-pink-200 to-pink-300 items-center justify-center">
+            <span class="text-8xl">📷</span>
+          </div>
+        `;
+      }
+      
+      document.getElementById('songTitle').textContent = photo.word;
+      document.getElementById('songArtist').textContent = photo.caption;
+      document.getElementById('photoCaption').textContent = '✨ Beautiful Memory ✨';
+      document.getElementById('photoModal').classList.remove('hidden');
+    }
+    
+    function closePhotoModal(event) {
+      if (!event || event.target === event.currentTarget) {
+        document.getElementById('photoModal').classList.add('hidden');
+      }
+    }
+    
+    // Generate Reason Cards
+    function generateReasonCards() {
+      const container = document.getElementById('reasonsGrid');
+      container.innerHTML = '';
+      
+      reasons.forEach((reason, index) => {
+        const card = document.createElement('div');
+        card.className = 'flip-card h-64';
+        card.onclick = () => card.classList.toggle('flipped');
+        card.innerHTML = `
+          <div class="flip-card-inner relative w-full h-full">
+            <div class="flip-card-front absolute w-full h-full rounded-2xl bg-gradient-to-br from-pink-100 to-white shadow-xl flex flex-col items-center justify-center p-6 border-2 border-pink-200">
+              <span class="text-5xl mb-4">${reason.icon}</span>
+              <h3 class="text-lg font-semibold text-pink-600 text-center">${reason.title}</h3>
+              <p class="text-pink-400 text-sm mt-2">Click to reveal 💕</p>
+            </div>
+            <div class="flip-card-back absolute w-full h-full rounded-2xl bg-gradient-to-br from-pink-400 to-pink-500 shadow-xl flex flex-col items-center justify-center p-6 text-white">
+              <p class="text-sm leading-relaxed text-center">${reason.text}</p>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+    
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateNames();
+          
+          // Update colors
+          document.body.style.background = `linear-gradient(135deg, ${config.background_color} 0%, white 50%, #fce4ec 100%)`;
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (v) => window.elementSdk.setConfig({ background_color: v })
+            },
+            {
+              get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (v) => window.elementSdk.setConfig({ primary_color: v })
+            },
+            {
+              get: () => cfg.secondary_color || defaultConfig.secondary_color,
+              set: (v) => window.elementSdk.setConfig({ secondary_color: v })
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (v) => window.elementSdk.setConfig({ text_color: v })
+            },
+            {
+              get: () => cfg.accent_color || defaultConfig.accent_color,
+              set: (v) => window.elementSdk.setConfig({ accent_color: v })
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['her_name', cfg.her_name || defaultConfig.her_name]
+        ])
+      });
+    }
+    
+    // Initialize on load
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc3b2e1b75f3e1c',t:'MTc2ODEyNzAwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
